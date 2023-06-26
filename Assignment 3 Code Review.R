@@ -13,7 +13,7 @@ word_list <- readLines("wordlist.txt")
 # Checking if the word list is empty
 if (length(word_list) == 0) {
   stop("Word list is empty. Please populate the 'word_list.txt' file with words.")
-}
+} # SA: helps the user know whether or not the word list has been scanned - very helpful for the user to be notified early on about this issue 
 
 # Choosing a random word from the list
 secret_word <- sample(word_list, 1)
@@ -36,7 +36,7 @@ cat("The secret word has", word_length, "letters.\n")
 # Creating the game loop
 while (TRUE) {
   # Ask for user input
-  guess <- readline("Enter a letter or the full word: ")
+  guess <- readline("Enter a letter or the full word: ") # SA: allows the user to input a letter or word without further prompt - enables easy use
   
   # Validating user input
   if (!(nchar(guess) == 1 || nchar(guess) == word_length)) {
@@ -45,7 +45,7 @@ while (TRUE) {
   }
   
   # Converting the guess to lowercase
-  guess <- tolower(guess)
+  guess <- tolower(guess) # SA: allows capital and lower case letters to be used by the user
   
   # Checking if the guess is a single letter or the full word
   if (nchar(guess) == 1) {
@@ -78,7 +78,7 @@ while (TRUE) {
   
   # Displaying the current state of the secret word
   current_state <- gsub(paste0("[^", paste(guessed_letters, collapse = ""), " ]"), "_", secret_word)
-  cat("Current state:", current_state, "\n")
+  cat("Current state:", current_state, "\n") # SA: successfully inputs the correct letter to replace the "_" in the visual depiction
   
   # Checking if the user has won or lost
   if (all(strsplit(current_state, "")[[1]] == strsplit(secret_word, "")[[1]])) {
@@ -87,7 +87,7 @@ while (TRUE) {
   } else if (wrong_guesses == max_wrong_guesses) {
     cat("Sorry, you lost. The secret word was:", secret_word, "\n")
     break
-  }
+  } # SA: Game successfully breaks the loop at the appropriate time
   
   # Displaying remaining tries
   remaining_tries <- max_wrong_guesses - wrong_guesses
