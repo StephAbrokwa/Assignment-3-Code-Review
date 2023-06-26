@@ -1,0 +1,7 @@
+cheetah
+lion
+tiger
+leopard
+panther
+ocelot
+cougar
